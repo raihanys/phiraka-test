@@ -7,8 +7,7 @@
     },
     "routes": [
         {
-            "src": "css/(.*)",
-            "dest": "/public/css/"
+            "handle": "filesystem"
         },
         {
             "src": "/(.*)",
@@ -31,6 +30,5 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie"
     },
-
     "outputDirectory": "public"
 }
