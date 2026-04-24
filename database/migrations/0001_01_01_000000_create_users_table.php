@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -12,11 +13,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_user', function (Blueprint $table) {
-            $table->integer('Id')->autoIncrement();
+            $table->increments('Id');
             $table->string('Username', 128)->unique();
             $table->string('Password', 60);
             $table->dateTime('CreateTime')->useCurrent();
         });
+
+        DB::statement('ALTER TABLE tbl_user MODIFY Id INT(10) UNSIGNED AUTO_INCREMENT');
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
